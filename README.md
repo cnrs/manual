@@ -51,4 +51,10 @@ Server role: ROLE_STANDALONE
 
 Press enter to see a dump of your service definitions
 
+
+
+service smb status
+systemctl enable smb
+systemctl start smb
+
 ```
