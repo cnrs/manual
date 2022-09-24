@@ -51,7 +51,17 @@ Server role: ROLE_STANDALONE
 
 Press enter to see a dump of your service definitions
 
+samba 服务器启动会后，默认会监听 139 和 445 端口，可以通过下面的命令查看 samba 服务器侦听的端口
+[root@cs home]# netstat -an4p | grep smbd | grep LISTEN
+tcp     0    0 0.0.0.0:139     0.0.0.0:*      LISTEN      23370/smbd          
+tcp     0    0 0.0.0.0:445     0.0.0.0:*      LISTEN      23370/smbd
+如果 samba 服务器所在的机器上开启了防火墙服务，则需要开放 139 和 445 端口，然后重启防火墙服务
 
+[root@cs ~]# firewall-cmd --zone=public --add-port=139/tcp --permanent
+success
+[root@cs ~]# firewall-cmd --zone=public --add-port=445/tcp --permanent
+success
+[root@cs ~]# systemctl restart firewalld
 
 service smb status
 systemctl enable smb
