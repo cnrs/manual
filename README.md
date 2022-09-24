@@ -34,8 +34,8 @@ yum install samba
         # 访问目录的用户
         valid users=smbusr1
 
-useradd smb_root
-smbpasswd -a smb_root  #然后输入两次密码就可
+useradd smbusr1
+smbpasswd -a smbusr1  #然后输入两次密码就可
 
 
 mkdir -p /data/share
